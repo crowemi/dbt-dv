@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: hpXr_Stage 
+    database: hpXr_Stage
+    schema: psa
+    tables:
+       - name: PSA_FACETS_CMC_CSPD_DESC
+       - name: PSA_FACETS_CMC_CSCS_CLASS

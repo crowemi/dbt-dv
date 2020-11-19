@@ -1,7 +1,9 @@
-WITH hub_member AS (
+WITH source AS (
 
 	SELECT 
 		HASHBYTES('SHA1', CONCAT(UPPER(LTRIM(RTRIM(sbsb.SBSB_ID))), meme.MEME_SFX)) member_hash_key,
+		GETDATE() load_date,
+		'facets.cmc_meme_member' record_source,
 		UPPER(LTRIM(RTRIM(sbsb.SBSB_ID))) member_id,
 		meme.MEME_SFX member_suffix
 	FROM {{ source('hpXr_Stage', 'PSA_FACETS_CMC_MEME_MEMBER') }} meme
@@ -13,7 +15,7 @@ WITH hub_member AS (
 
     SELECT 
         *
-    FROM hub_member
+    FROM source
 
 )
 
